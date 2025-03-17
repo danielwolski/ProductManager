@@ -1,0 +1,42 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+.grey-button {
+    margin-left: 5px;
+    margin-top:3px;
+    min-width:70px;
+    padding: 10px;
+    background-color: rgb(167, 173, 189);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .red-button {
+    margin-left: 92%;
+    margin-top:10px;
+    min-width:70px;
+    padding: 10px;
+    background-color: rgb(233, 77, 77);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.grey-button:hover {
+    background-color: rgb(90, 93, 100);
+  }
+
+.invalid-input {
+  border: 2px solid red;
+}
+
+.no-objects-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #999;
+  font-style: italic;
+}

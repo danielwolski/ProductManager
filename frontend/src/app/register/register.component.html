@@ -1,0 +1,64 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <form class="register-form" #registerForm="ngForm" (ngSubmit)="onRegister()">
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <div class="input-container">
+        <input 
+          id="username" 
+          [(ngModel)]="username" 
+          name="username" 
+          placeholder="Username (only visible in the application)" 
+          required
+          minlength="3"
+          #usernameField="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="usernameField.invalid && usernameField.touched">
+        <small *ngIf="usernameField.errors?.['required']">Username is required.</small>
+        <small *ngIf="usernameField.errors?.['minlength']">Username must be at least 3 characters long.</small>
+      </div>
+
+      <div class="input-container">
+        <input 
+          id="login" 
+          [(ngModel)]="login" 
+          name="login" 
+          type="text" 
+          placeholder="Login" 
+          required 
+          minlength="5"
+          #loginField="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="loginField.invalid && loginField.touched">
+        <small *ngIf="loginField.errors?.['required']">Login is required.</small>
+        <small *ngIf="loginField.errors?.['minlength']">Login must be at least 5 characters long.</small>
+      </div>
+
+      <div class="input-container">
+        <input 
+          id="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          type="password" 
+          placeholder="Password" 
+          required 
+          minlength="5"
+          #passwordField="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="passwordField.invalid && passwordField.touched">
+        <small *ngIf="passwordField.errors?.['required']">Password is required.</small>
+        <small *ngIf="passwordField.errors?.['minlength']">Password must be at least 5 characters long.</small>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+        <button type="button" (click)="goToLogin()">Go to Login</button>
+      </div>
+    </form>
+  </div>
+</div>

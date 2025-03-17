@@ -1,0 +1,54 @@
+<div *ngIf="errorMessage" class="toast">
+  {{ errorMessage }}
+</div>
+
+<div>
+    <div *ngIf="isAdmin()">
+      <h2>Add category</h2>
+      <form (ngSubmit)="confirmCreateCategory()" class="categories-form">
+        <input
+          id="name"
+          [(ngModel)]="categoryRequest.name"
+          name="name"
+          placeholder="name"
+          required
+        />
+      
+        <div class="form-buttons">
+          <button class="grey-button" type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+
+    <h2>Categories</h2>
+
+    <table *ngIf="categories.length > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ category.name }}</td>
+            <td>
+              <button *ngIf="isAdmin()" class="grey-button" (click)="removeCategory(category.id)">
+                Remove
+              </button>
+              <button class="grey-button" (click)="showCategoryProducts(category.name)">
+                Show products
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<app-modal
+  [isVisible]="isModalVisible"
+  [selectedCategoryName]="selectedCategoryName"
+  (closeModal)="closeModal()"
+></app-modal>

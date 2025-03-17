@@ -1,0 +1,28 @@
+<div class="modal-overlay" *ngIf="isVisible" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+
+    <h2>Products of category: {{this.selectedCategoryName}}</h2>
+
+    <table class="product-table" *ngIf="categoryProducts.length > 0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of categoryProducts; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.categoryName }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="red-button" (click)="close()">Close</button>
+    
+  </div>
+</div>

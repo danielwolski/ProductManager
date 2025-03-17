@@ -1,0 +1,85 @@
+<div *ngIf="errorMessage" class="toast">
+  {{ errorMessage }}
+</div>
+
+<div>
+    <div *ngIf="isAdmin()">
+      <h2>Add product</h2>
+      <form (ngSubmit)="confirmCreateProduct()" class="product-form">
+        <input
+          id="name"
+          [(ngModel)]="productRequest.name"
+          name="name"
+          placeholder="name"
+          required
+        />
+
+        <input
+          id="description"
+          [(ngModel)]="productRequest.description"
+          name="description"
+          placeholder="description"
+          required
+        />
+
+        <input
+          id="price"
+          [(ngModel)]="productRequest.price"
+          name="price"
+          placeholder="price"
+          required
+        />
+
+        <select 
+          id="categoryName" 
+          [(ngModel)]="productRequest.categoryName" 
+          name="categoryName" 
+          required>
+          <option value="" disabled selected>Select category</option>
+          <option *ngFor="let category of categories" [value]="category.name">
+              {{ category.name }}
+          </option>
+        </select>
+      
+        <div class="form-buttons">
+          <button class="grey-button" type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+
+    <h2>Products</h2>
+    <table class="product-table" *ngIf="products.length > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.categoryName }}</td>
+            <td>
+              <button *ngIf="isAdmin()" class="grey-button" (click)="removeProduct(product.id)">
+                Remove
+              </button>
+              <button class="grey-button" (click)="openProductDetails(product.id)">
+                Show details
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+
+<app-modal
+  [isVisible]="isModalVisible"
+  [selectedProductId]="selectedProductId"
+  (closeModal)="closeModal()"
+></app-modal>
