@@ -1,0 +1,59 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 181px; 
+    background-color: rgb(192, 199, 218);
+    height: 100%; 
+}
+
+.menu-item button {
+    background: rgb(251, 251, 252);
+    color: black;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 173px;
+    font-size: 18px;
+    text-align: left;
+    margin-left: -36px;
+  }
+  
+.menu-item button:hover {
+    background: rgb(110, 114, 124);
+}
+
+.menu-item button.active {
+    background: rgb(167, 173, 189);
+    color: black;
+    font-weight: bold;
+}
+  
+.menu {
+    list-style-type: none;
+    margin: 0;
+}
+
+.username-greeting {
+    color: black;
+    font-size: 20px;
+    margin-left: -36px;
+}
+  
+.logout-menu {
+    list-style-type: none;
+    margin-bottom: 12px;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }

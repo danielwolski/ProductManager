@@ -1,0 +1,36 @@
+<div class="app-container">
+    <div class="sidebar">
+      <ul class="menu">
+        <li class="menu-item"> 
+          <button 
+            [class.active]="isActive('/products')"
+            (click)="goToProducts()">
+              Products
+          </button>
+        </li>
+        <li class="menu-item"> 
+          <button 
+            [class.active]="isActive('/categories')"
+            (click)="goToCategories()">
+              Categories
+          </button>
+        </li>
+      </ul>
+      <ul class="logout-menu">  
+        <div *ngIf="isLoggedIn()" class="username-greeting">
+          Logged as {{getUsername()}} with role {{getRole()}}
+        </div>
+        <li class="menu-item"> 
+          <button 
+            (click)="logout()">
+              Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+  
